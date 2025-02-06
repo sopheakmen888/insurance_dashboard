@@ -84,3 +84,24 @@ volumes:
 4. Run `docker logs <container_name or id>`
 5. Open any browser and go to http://localhost:5050
 6. Login with your default login account which was set up in .env.dev
+
+## environment variables
+
+```bash
+# postgres database service
+POSTGRES_USER=postgres
+POSTGRES_DB=postgres
+POSTGRES_PASSWORD=postgres
+
+# pgadmin service
+PGADMIN_DEFAULT_EMAIL=admin@demo.com
+PGADMIN_DEFAULT_PASSWORD=admin123
+
+# pkmis service
+DATABASE_URL=postgresql://postgres:postgres@postgres:5432/pkmis_db
+SECRET=your_secret
+ADMIN_DEFAULT_USERNAME=admin
+ADMIN_DEFAULT_EMAIL=admin@demo.com
+ADMIN_DEFAULT_PASSWORD=12345678
+
+```

@@ -62,7 +62,7 @@ model health_facility {
   id                   Int      @id @default(autoincrement())
   health_facility_name String   @db.VarChar(255)
   is_partner_hf        Boolean? @default(false)
-  phone_number         String?  @db.VarChar(20)
+  phone_number         String?
   location             String?
   email                String?  @db.VarChar(255)
   claim                claim[]
