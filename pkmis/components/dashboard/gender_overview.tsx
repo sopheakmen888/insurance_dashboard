@@ -9,7 +9,7 @@ import {
 
 import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
 
-export async function GenderOverview({
+export function GenderOverview({
   data,
 }: {
   data: { name: string; value: number; color: string }[];
