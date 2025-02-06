@@ -96,6 +96,9 @@ CREATE TABLE employee (
     email VARCHAR(255)
 );
 
+
+
+
 CREATE TABLE insured_coverage (
     id SERIAL PRIMARY KEY,
     employee_id INT REFERENCES employee(id) ON DELETE CASCADE,
