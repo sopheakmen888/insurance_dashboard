@@ -26,6 +26,7 @@ CREATE TABLE users (
 INSERT INTO users (name, email, password) VALUES 
 ('sopheak', 'sopheak@demo.com', crypt('pass123', gen_salt('bf',10))),
 ('sophea', 'sophea@demo.com', crypt('pass123', gen_salt('bf',10)));
+('leakhena', 'leakhena@demo.com', crypt('pass123', gen_salt('bf',10)));
 
 CREATE TABLE company (
     id SERIAL PRIMARY KEY,

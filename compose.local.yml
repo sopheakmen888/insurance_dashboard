@@ -23,6 +23,22 @@ services:
     volumes:
       - pgadmin-data:/var/lib/pgadmin
 
+  pkmis:
+    build:
+      context: ./pkmis
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    depends_on:
+      - postgres
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - SECRET=${SECRET}
+      - ADMIN_DEFAULT_USERNAME=${ADMIN_DEFAULT_USERNAME}
+      - ADMIN_DEFAULT_EMAIL=${ADMIN_DEFAULT_EMAIL}
+      - ADMIN_DEFAULT_PASSWORD=${ADMIN_DEFAULT_PASSWORD}
+    restart: unless-stopped
+
 volumes:
   postgres-data:
   pgadmin-data:
