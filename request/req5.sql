@@ -8,7 +8,7 @@ INNER JOIN quotation ON insurance_policy.quotation_id=quotation_id;
 CREATE VIEW total_insured_and_sum_total AS
 SELECT
      COUNT(insured_coverage.insurance_policy_id) AS total_insured,
-     sum(insurance_policy_benefit.coverage_amount) AS total_sum_insured
+     SUM(insurance_policy_benefit.coverage_amount) AS total_sum_insured
 FROM insured_coverage
 INNER JOIN insurance_policy_benefit ON insured_coverage.insurance_policy_id=insurance_policy_benefit.id;
 

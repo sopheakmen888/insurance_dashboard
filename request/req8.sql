@@ -5,8 +5,11 @@ SELECT
 FROM quotation;
 
 CREATE VIEW total_pending_quotation_and_maximum_premium AS
-SELECT COUNT(*) AS total_quotation,
-       AVG(*) AS average_premium
+SELECT COUNT(*) AS total_quotation_pending,
 FROM quotation;
 WHERE quotation_status='pending';
+
+SELECT 
+       MAX(proposed_premium) AS max_premium
+FROM quotation
 
