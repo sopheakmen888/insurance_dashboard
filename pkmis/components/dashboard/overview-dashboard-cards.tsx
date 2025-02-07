@@ -9,9 +9,7 @@ import { getTotalSumNumberOfCompany } from "@/services/dashboard/get-total-sum-n
 import { getTotalSumPremium } from "@/services/dashboard/get-total-sum-premium";
 
 export async function OverviewDashboardCards() {
-  // const totalSales = 10;
-  // const totalCustomers = 10;
-  const totalSuppliers = 10;
+  
 
   const totalInsured = await getTotalInsured();
   console.log(totalInsured);
