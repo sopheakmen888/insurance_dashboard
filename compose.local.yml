@@ -28,7 +28,7 @@ services:
       context: ./pkmis
       dockerfile: Dockerfile
     ports:
-      - 3310:3000
+      - 3000:3000
     depends_on:
       - postgres
     environment:
