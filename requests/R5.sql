@@ -12,7 +12,7 @@ SELECT
 COUNT( insured_coverage.insurance_policy_id) AS total_insured,
 SUM( insurance_policy_benefit.coverage_amount) AS total_sum_insured
 FROM insured_coverage 
-JOIN insurance_policy_benefit ON insured_coverage.insurance_policy_id = insurance_policy_benifit.id
+JOIN insurance_policy_benefit ON insured_coverage.insurance_policy_id = insurance_policy_benefit.id
 
 -- 5.3
 
@@ -27,9 +27,19 @@ FROM
     JOIN insurance_policy i ON i.company_id = c.id
     JOIN quotation q ON q.id = i.quotation_id
 WHERE
-    q.quotation_status = 'Accepted';
+    q.quotation_status != 'Accepted';
 
 -- 5.4
+
+SELECT COUNT(*) AS total_hf_partner
+FROM health_facility
+WHERE is_partner_hf = 'true';
+
+SELECT COUNT(*) AS total_hf_partner
+FROM health_facility
+WHERE is_partner_hf = 'false';
+
+
 
 
 
