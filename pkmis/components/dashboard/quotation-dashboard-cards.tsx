@@ -1,10 +1,17 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { getTotalAvgPremium } from "@/services/dashboard/get-total-avg-premium";
+import { getTotalMaxQuotation } from "@/services/dashboard/get-total-max-quotation";
+import { getTotalPending } from "@/services/dashboard/get-total-pending";
+import { getTotalSumQuotation } from "@/services/dashboard/get-total-sum-quotation";
 
 export async function QuotationDashboardCards() {
-  const totalSales = 10;
-  const totalProducts = 10;
   const totalCustomers = 10;
   const totalSuppliers = 10;
+
+  const totalQuotation = await getTotalSumQuotation();
+  const totalAvgPremium = await getTotalAvgPremium();
+  const totalPending = await getTotalPending();
+  const totalMaxPremium = await getTotalMaxQuotation();
 
   return (
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
@@ -25,8 +32,8 @@ export async function QuotationDashboardCards() {
           </svg>
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">{totalSales.toFixed(2)}</div>
-          <p className="text-xs text-muted-foreground">Avg. Premium: $3,000</p>
+          <div className="text-2xl font-bold">{Number(totalQuotation).toFixed(2)}</div>
+          <p className="text-xs text-muted-foreground">Avg. Premium: ${Number(totalAvgPremium).toFixed(2)}</p>
         </CardContent>
       </Card>
       <Card className="bg-orange-50">
@@ -49,8 +56,8 @@ export async function QuotationDashboardCards() {
           </svg>
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">{totalProducts}</div>
-          <p className="text-xs text-muted-foreground">Max Premium: $6,000</p>
+          <div className="text-2xl font-bold">{totalPending.toString()}</div>
+          <p className="text-xs text-muted-foreground">Max Premium: ${Number(totalMaxPremium).toFixed(2)}</p>
         </CardContent>
       </Card>
       <Card className="bg-blue-50">
