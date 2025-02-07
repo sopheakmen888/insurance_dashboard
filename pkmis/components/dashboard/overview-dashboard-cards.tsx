@@ -1,10 +1,16 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { getTotalHfPartner } from "@/services/dashboard/get-total-hfPartner";
 import { getTotalInsured } from "@/services/dashboard/get-total-insured";
+import { getTotalNotPartner } from "@/services/dashboard/get-total-notPartner";
+import { getTotalPolicy } from "@/services/dashboard/get-total-policy";
+import { getTotalProspect } from "@/services/dashboard/get-total-prospect";
 import { getTotalSumInsured } from "@/services/dashboard/get-total-sum-insured";
+import { getTotalSumNumberOfCompany } from "@/services/dashboard/get-total-sum-numberCompany";
+import { getTotalSumPremium } from "@/services/dashboard/get-total-sum-premium";
 
 export async function OverviewDashboardCards() {
-  const totalSales = 10;
-  const totalCustomers = 10;
+  // const totalSales = 10;
+  // const totalCustomers = 10;
   const totalSuppliers = 10;
 
   const totalInsured = await getTotalInsured();
@@ -13,6 +19,13 @@ export async function OverviewDashboardCards() {
   const totalSumInsured = await getTotalSumInsured();
   console.log(totalSumInsured);
 
+  const totalPolicy = await getTotalPolicy();
+  const totalSumPremium = await getTotalSumPremium()
+  const totalProspect = await getTotalProspect();
+  const totalSumNumberOfCompany = await getTotalSumNumberOfCompany()
+  const totalHfPartner = await getTotalHfPartner();
+  const totalNotPartner = await getTotalNotPartner();
+ 
   return (
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
       <Card className="bg-red-50">
@@ -32,9 +45,9 @@ export async function OverviewDashboardCards() {
           </svg>
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">{totalSales.toFixed(2)}</div>
+          <div className="text-2xl font-bold">{totalPolicy.toString()}</div>
           <p className="text-xs text-muted-foreground">
-            Premium Amount: $10,000
+            Premium Amount: ${Number(totalSumPremium).toFixed(2)}
           </p>
         </CardContent>
       </Card>
@@ -81,8 +94,8 @@ export async function OverviewDashboardCards() {
           </svg>
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">{totalCustomers}</div>
-          <p className="text-xs text-muted-foreground">Number of company: 4</p>
+          <div className="text-2xl font-bold">{totalProspect.toString()}</div>
+          <p className="text-xs text-muted-foreground"> Number of company: {totalSumNumberOfCompany.toString()}</p>
         </CardContent>
       </Card>
       <Card className="bg-green-50">
@@ -105,8 +118,8 @@ export async function OverviewDashboardCards() {
           </svg>
         </CardHeader>
         <CardContent>
-          <div className="text-2xl font-bold">{totalSuppliers}</div>
-          <p className="text-xs text-muted-foreground">Not Partner: 2</p>
+          <div className="text-2xl font-bold">{totalHfPartner.toString()}</div>
+          <p className="text-xs text-muted-foreground">Not Partner: {totalNotPartner.toString()}</p>
         </CardContent>
       </Card>
     </div>
